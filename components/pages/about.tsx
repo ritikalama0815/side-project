@@ -27,6 +27,12 @@ export function AboutPage() {
                 "Our team brings together decades of combined experience in architectural design, construction, and project management. From intricate stair railings to elegant false ceilings, we handle every detail with precision and care."
               }
             </p>
+            <br/>
+            <p className="text-s text-muted-foreground leading-relaxed">
+              {
+                "हाम्रो टिमले वास्तुकला डिजाइन, निर्माण, र परियोजना व्यवस्थापनमा दशकौंको संयुक्त अनुभवलाई एकसाथ ल्याउँछ। जटिल भर्‍याङको रेलिङदेखि सुरुचिपूर्ण बनावटी छतसम्म, हामी प्रत्येक विवरणलाई सटीकता र सावधानीपूर्वक ह्यान्डल गर्छौं।"
+              }
+            </p>
           </div>
 
           <div className="space-y-4">
@@ -81,6 +87,11 @@ export function AboutPage() {
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               {
                 '"Our goal is not just to build structures, but to create environments where people feel home."'
+              }
+            </p>
+            <p className="text-lg text-green-600 max-w-2xl mx-auto leading-relaxed">
+              {
+                '"हाम्रो लक्ष्य केवल संरचनाहरू निर्माण गर्नु मात्र होइन, तर मानिसहरूलाई घर जस्तो महसुस हुने वातावरण सिर्जना गर्नु हो। "'
               }
             </p>
           </div>

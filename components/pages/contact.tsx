@@ -1,12 +1,61 @@
 "use client"
 
+import type React from "react"
+
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Loader2, CheckCircle, AlertCircle } from "lucide-react"
 
 export function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  })
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.id]: e.target.value,
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus("loading")
+    setErrorMessage("")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to send message")
+      }
+
+      setStatus("success")
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000)
+    } catch (error) {
+      setStatus("error")
+      setErrorMessage("Failed to send message. Please try again or contact us directly.")
+    }
+  }
+
   return (
     <div className="min-h-screen py-24 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-6xl mx-auto space-y-12 relative z-10">
@@ -31,15 +80,11 @@ export function ContactPage() {
                     <MapPin className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">Address</p>
+                    <p className="font-semibold text-foreground">Address</p>
                     <p className="text-muted-foreground">
-                      Ward No. 10, Thapagaun, Baneshwor
+                      Thapagaun 25, Baneshwor
                       <br />
-                      वार्ड न. १०, थापागाउ, बानेश्वर 
-                      <br />
-                      Kathmandu, Nepal
-                      <br />
-                      काठमाडौं उपत्यका, नेपाल 
+                      Kathmandu, Nepal 44600
                     </p>
                   </div>
                 </div>
@@ -49,9 +94,9 @@ export function ContactPage() {
                     <Phone className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">Phone</p>
-                    <p className="text-muted-foreground">+977 9848731873</p>
-                    <p className="text-muted-foreground">+977 9813739873</p>
+                    <p className="font-semibold text-foreground">Phone</p>
+                    <p className="text-muted-foreground">+977 9813010523</p>
+                    <p className="text-muted-foreground">+977 9848739873</p>
                   </div>
                 </div>
 
@@ -60,7 +105,7 @@ export function ContactPage() {
                     <Mail className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">Email</p>
+                    <p className="font-semibold text-foreground">Email</p>
                     <p className="text-muted-foreground">rikelama100@gmail.com</p>
                   </div>
                 </div>
@@ -70,8 +115,9 @@ export function ContactPage() {
                     <Clock className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">Business Hours</p>
+                    <p className="font-semibold text-foreground">Business Hours</p>
                     <p className="text-muted-foreground">Sunday - Saturday: 9:00 AM - 7:00 PM</p>
+                    <p className="text-muted-foreground">हामी चाडपर्वहरूमा उपलब्ध नहुन सक्छौं।</p>
                   </div>
                 </div>
               </CardContent>
@@ -83,45 +129,101 @@ export function ContactPage() {
               <CardTitle className="text-foreground">Send Us a Message</CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-foreground">
-                      Name
+                      Name <p className="inline text-red-600">*Required</p>
                     </label>
-                    <Input id="name" placeholder="Your name" />
+                    <Input
+                      id="name"
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      disabled={status === "loading"}
+                    />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium text-foreground">
                       Email
                     </label>
-                    <Input id="email" type="email" placeholder="your@email.com" />
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      disabled={status === "loading"}
+                    />
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="phone" className="text-sm font-medium text-foreground">
-                    Phone
+                    Phone <p className="inline text-red-600">*Required</p>
                   </label>
-                  <Input id="phone" placeholder="Your phone number" />
+                  <Input
+                    id="phone"
+                    placeholder="Your phone number"
+                    value={formData.phone}
+                    required
+                    onChange={handleChange}
+                    disabled={status === "loading"}
+                  />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="subject" className="text-sm font-medium text-foreground">
                     Subject
                   </label>
-                  <Input id="subject" placeholder="What is this about?" />
+                  <Input
+                    id="subject"
+                    placeholder="What is this about?"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    disabled={status === "loading"}
+                  />
                 </div>
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-foreground">
-                    Message
+                    Message <p className="inline text-red-600">*Required</p>
                   </label>
-                  <Textarea id="message" placeholder="Tell us about your project..." rows={6} />
+                  <Textarea
+                    id="message"
+                    placeholder="Tell us about the project in your mind..."
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    disabled={status === "loading"}
+                  />
                 </div>
 
-                <Button type="submit" className="w-full" size="lg">
-                  Send Message
+                {status === "success" && (
+                  <div className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg">
+                    <CheckCircle className="h-5 w-5" />
+                    <span>Message sent successfully! We'll get back to you soon.</span>
+                  </div>
+                )}
+
+                {status === "error" && (
+                  <div className="flex items-center gap-2 text-red-600 bg-red-50 p-3 rounded-lg">
+                    <AlertCircle className="h-5 w-5" />
+                    <span>{errorMessage}</span>
+                  </div>
+                )}
+
+                <Button type="submit" className="w-full" size="lg" disabled={status === "loading"}>
+                  {status === "loading" ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
                 </Button>
               </form>
             </CardContent>

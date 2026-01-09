@@ -20,6 +20,7 @@ export function HomePage({ onNavigate }: HomeProps) {
           {
             "Transform your vision into reality with Western Builders and Suppliers. Excellence in interior and exterior design for more than a decade."
           }
+          <br/> एक दशकभन्दा बढी समयदेखि आन्तरिक र बाह्य डिजाइनमा उत्कृष्टता।
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
