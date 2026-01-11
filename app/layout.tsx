@@ -25,17 +25,17 @@ export const metadata: Metadata = {
     apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "Western Builders and Suppliers Pvt. Ltd.",
+    title: "Western Quality Iron Builders and Suppliers Pvt. Ltd.",
     description:
       "Interior and exterior design company specializing in stairs, railings, false ceilings, and tank stands.",
     url: "https://western-builders.vercel.app",
-    siteName: "Western Builders and Suppliers",
+    siteName: "Western Quality Iron Builders and Suppliers",
     images: [
       {
         url: "https://western-builders.vercel.app/wbs.jpg",
         width: 1200,
         height: 630,
-        alt: "Western Builders and Suppliers",
+        alt: "Western Quality Iron Builders and Suppliers",
       },
     ],
     locale: "en_US",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Western Builders and Suppliers Pvt. Ltd.",
+    title: "Western Quality Iron Builders and Suppliers Pvt. Ltd.",
     description:
       "Interior and exterior design company specializing in stairs, railings, false ceilings, and tank stands.",
     images: ["https://western-builders.vercel.app/wbs.jpg"],
