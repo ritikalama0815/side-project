@@ -11,10 +11,10 @@ export function HomePage({ onNavigate }: HomeProps) {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-primary leading-tight">
-          <span className="block">Crafts</span>
+        <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight">
+          <span className="block">DESIGNS</span>
           <span className="block mt-2">that feel like home</span>
-        </h1>
+        </p>
 
         <p className="text-xlg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           {

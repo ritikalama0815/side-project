@@ -34,7 +34,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             onClick={() => handleNavigate("home")}
             className="text-xl md:text-2xl font-bold text-primary hover:text-accent transition-colors"
           >
-            Western Builders
+            Western Quality Iron Builders and Suppliers
           </button>
 
           {/* Desktop Navigation */}

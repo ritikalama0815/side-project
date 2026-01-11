@@ -61,9 +61,9 @@ export function WorksPage() {
     <div className="min-h-screen py-24 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto space-y-12 relative z-10">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary">Our Portfolio</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-primary">Our Projects</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            {"Explore our collection of completed projects showcasing our expertise in interior and exterior design."}
+            {"Explore our collection of completed projects showing our interior and exterior design."}
           </p>
         </div>
 
