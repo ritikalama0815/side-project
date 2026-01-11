@@ -16,7 +16,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Western Builders and Suppliers Pvt. Ltd.",
+  title: "Western Quality Iron Builders and Suppliers Pvt. Ltd.",
   description:
     "Interior and exterior design company specializing in stairs, railings, false ceilings, and tank stands.",
   icons: {
