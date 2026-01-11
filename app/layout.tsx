@@ -18,13 +18,38 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Western Builders and Suppliers Pvt. Ltd.",
   description:
-    "Interior and exterior design company specializing in stairs, railings, false ceilings, and tank stands. Transform your space with us.",
-    icons: {
-      icon: "/wbs.jpg",
-      shortcut: "/wbs.jpg",
-      apple: "/apple-icon.png",
+    "Interior and exterior design company specializing in stairs, railings, false ceilings, and tank stands.",
+  icons: {
+    icon: "/wbs.jpg",
+    shortcut: "/wbs.jpg",
+    apple: "/apple-icon.png",
+  },
+  openGraph: {
+    title: "Western Builders and Suppliers Pvt. Ltd.",
+    description:
+      "Interior and exterior design company specializing in stairs, railings, false ceilings, and tank stands.",
+    url: "https://western-builders.vercel.app",
+    siteName: "Western Builders and Suppliers",
+    images: [
+      {
+        url: "https://western-builders.vercel.app/wbs.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Western Builders and Suppliers",
       },
-  }
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Western Builders and Suppliers Pvt. Ltd.",
+    description:
+      "Interior and exterior design company specializing in stairs, railings, false ceilings, and tank stands.",
+    images: ["https://western-builders.vercel.app/wbs.jpg"],
+  },
+}
+
 
 export default function RootLayout({
   children,
